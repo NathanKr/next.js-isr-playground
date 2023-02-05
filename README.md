@@ -3,11 +3,11 @@ experiment with next.js Incremental Static Generation
 
 <h2>Implementation options</h2>
 <ul>
-<li>use periodic revalidate in getStaticProps</li>
+<li>use periodic revalidate (rebuild) in getStaticProps</li>
 <li>force re-validatation : call unstable_revalidate(). </li>
 </ul>
 
-<h2>periodic revalidate - Posts1 page</h2>
+<h2>periodic revalidate (rebuild) - Posts1 page</h2>
 
 ```ts
 export const getStaticProps: GetStaticProps = async () => {
@@ -25,9 +25,9 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 ```
 
-<h2>on demand revalidate - Posts2 page</h2>
-
-call https://<your-site.com>/api/revalidate?secret=<token> to revalidate
+<h2>on demand revalidate (rebuild) - Posts2 page</h2>
+<p>call https://<your-site.com>/api/revalidate?secret=<token> to re build the page</p>
+<p>/pages/api/revalidate.ts</p>
 
 ```ts
 export default async function handler(
