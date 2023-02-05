@@ -7,7 +7,7 @@ interface IPost {
   author: string;
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const revalidateSec = 10
   // --- this will show when it is invoked, it should run at the most every 10sec
   console.log(`next.js is running getStaticProps ... , revalidate : ${revalidateSec} [sec]`);
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Posts = (props: { posts: IPost[] }) => {
+const Posts1 = (props: { posts: IPost[] }) => {
   const elemsPosts = props.posts.map((it, i) => <p key={i}>{it.title}</p>);
   return (
     <div>
@@ -36,4 +36,4 @@ const Posts = (props: { posts: IPost[] }) => {
   );
 };
 
-export default Posts;
+export default Posts1;

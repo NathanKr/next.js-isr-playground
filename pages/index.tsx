@@ -12,9 +12,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main >
-        <Link href='/posts'>
-          <a >Click here to navigate to posts</a>
+      <main style={{ display: "flex", flexDirection: "column" }}>
+        <h5>
+          make sure you run : json-server --watch .\public\data\db.json --port
+          8001
+        </h5>
+        <Link href="/posts-re-validate">
+          Click here to navigate to posts with re-validate every 10 sec
+        </Link>
+        <Link href="/posts-ondemand-validation">
+          Click here to navigate to posts with on demand validation
         </Link>
       </main>
     </div>
