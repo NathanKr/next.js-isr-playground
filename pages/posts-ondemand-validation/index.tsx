@@ -11,7 +11,7 @@ interface IPost {
 
 export const getStaticProps: GetStaticProps = async () => {
   // --- this will show when it is invoked, it should run at the most every 10sec
-  console.log(`next.js is running getStaticProps ... `);
+  console.log(`next.js is running getStaticProps for Posts2 ... `);
 
   const url = "http://localhost:8001/posts";
   const res = await fetch(url);
@@ -51,6 +51,7 @@ const Posts2 = (props: { posts: IPost[] }) => {
       >
         issue on demand re-validation.
       </button>
+      <p>check server console.log for on demand re-validation result --&gt; re build the page</p>
       <h2>Posts titles . fetch using getStaticProps</h2>
       {elemsPosts}
     </div>

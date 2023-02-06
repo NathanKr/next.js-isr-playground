@@ -10,7 +10,7 @@ interface IPost {
 export const getStaticProps: GetStaticProps = async () => {
   const revalidateSec = 10
   // --- this will show when it is invoked, it should run at the most every 10sec
-  console.log(`next.js is running getStaticProps ... , revalidate : ${revalidateSec} [sec]`);
+  console.log(`next.js is running getStaticProps for Posts1... , revalidate : ${revalidateSec} [sec]`);
   
 
   const url = "http://localhost:8001/posts";
