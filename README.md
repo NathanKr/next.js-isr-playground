@@ -97,3 +97,8 @@ invoke from root the following
 ```
 json-server --watch .\public\data\db.json --port 8001
 ```
+
+<h2>Open issues</h2>
+<ul>
+<li>i have remarked the check of REVALIDATE_SECRET_TOKEN on revalidate.ts because it was sent from the client and there the environment variable is null. anyway call of /api/revalidate with the secret must be from the server</li>
+</ul>
