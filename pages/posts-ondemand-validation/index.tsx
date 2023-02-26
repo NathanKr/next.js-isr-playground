@@ -1,21 +1,21 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
 import React from "react";
-import { getOnDemandRevalidationUrl } from "../../src/utils";
+import AddPost from "../../src/components/add-post";
+import { getPostsFromGoogleSheet } from "../../src/logic/google-spreadsheet-utils";
+import { getOnDemandRevalidationUrl } from "../../src/logic/utils";
+import { IPost } from "../../src/types/i-post";
 
-interface IPost {
-  id: number;
-  title: string;
-  author: string;
-}
+  
 
 export const getStaticProps: GetStaticProps = async () => {
   // --- this will show when it is invoked, it should run at the most every 10sec
   console.log(`next.js is running getStaticProps for Posts2 ... `);
 
-  const url = "http://localhost:8001/posts";
-  const res = await fetch(url);
-  const posts: IPost[] = await res.json();
+  // const url = "http://localhost:8001/posts";
+  // const res = await fetch(url);
+  // const posts: IPost[] = await res.json();
+  const posts: IPost[] = await getPostsFromGoogleSheet();  
 
   return {
     props: { posts }, // will be passed to the page component as props
@@ -38,6 +38,7 @@ const Posts2 = (props: { posts: IPost[] }) => {
           be because next.js does not want you to expose it on the client side
         </p>
       </div>
+      <AddPost/>
       <button
         onClick={async () => {
           try {

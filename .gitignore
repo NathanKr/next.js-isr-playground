@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# added by nathan 26/2/2023
+/secret
+
 # dependencies
 /node_modules
 /.pnp

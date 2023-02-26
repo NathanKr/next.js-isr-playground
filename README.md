@@ -11,9 +11,7 @@ experiment with next.js Incremental Static Generation
 
 ```ts
 export const getStaticProps: GetStaticProps = async () => {
-  const url = "http://localhost:8001/posts";
-  const res = await fetch(url);
-  const posts: IPost[] = await res.json();
+  const posts: IPost[] = await getPostsFromGoogleSheet();
 
   return {
     props: { posts }, // will be passed to the page component as props
@@ -35,7 +33,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   console.log("server handle on demand revalidation");
-  
+
   // Check for secret to confirm this is a valid request
 
   // --- todo nath not working !!!! check and bring back
@@ -55,10 +53,10 @@ export default async function handler(
     return res.status(500).send("Error revalidating");
   }
 }
-
 ```
 
 Posts2 page
+
 ```ts
 export const getStaticProps: GetStaticProps = async () => {
   // --- this will show when it is invoked, it should run at the most every 10sec
@@ -71,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { posts }, // will be passed to the page component as props
     // --- not required because we use on demand ISR
-    // revalidate: revalidateSec, // In seconds 
+    // revalidate: revalidateSec, // In seconds
   };
 };
 ```
@@ -89,7 +87,6 @@ To get the correct behavior of getStaticProps you need to run it on production m
 npm run build
 npm run start
 ```
-
 
 <h2>json server</h2>
 invoke from root the following

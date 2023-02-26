@@ -13,10 +13,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main style={{ display: "flex", flexDirection: "column" }}>
-        <h5>
-          make sure you run : json-server --watch .\public\data\db.json --port
-          8001
-        </h5>
         <Link href="/posts-re-validate">
           Click here to navigate to posts with re-validate every 10 sec
         </Link>
