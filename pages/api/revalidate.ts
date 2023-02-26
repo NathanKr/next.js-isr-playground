@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getBaseServerUrl } from "../../src/logic/utils";
 
 // --- This is relevant to on - demand ISR
 // --- call this with https://<your-site.com>/api/revalidate?secret=<token>
@@ -8,7 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   console.log("server handle on demand revalidation");
-  
+
   // Check for secret to confirm this is a valid request
 
   // --- todo nath not working !!!! check and bring back
@@ -19,8 +20,8 @@ export default async function handler(
   try {
     // this should be the actual path not a rewritten path
     // e.g. for "/blog/[slug]" this should be "/blog/post-1"
-    const urlPathToRevalidate = "/posts-ondemand-validation";
-    await res.revalidate(urlPathToRevalidate);
+    const urlRelativePathToRevalidate = "/posts-ondemand-validation";
+    await res.revalidate(urlRelativePathToRevalidate);
     return res.json({ revalidated: true });
   } catch (err) {
     // If there was an error, Next.js will continue

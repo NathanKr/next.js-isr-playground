@@ -19,10 +19,12 @@ export async function loadSpreadSheetDoc(
 }
 
 export async function addPostToGoogleSheet(): Promise<void> {
+  const newId = (await getPostsLastId()) + 1;
+
   const newPost: IPost = {
-    id: 0,
-    title: "",
-    author: "",
+    id: newId,
+    title: `json-server-updated${newId}`,
+    author: `typicode-updated${newId}`,
   };
   const doc = await loadSpreadSheetDoc(SPREAD_SHEET_ID);
 
@@ -30,6 +32,11 @@ export async function addPostToGoogleSheet(): Promise<void> {
   // const secondSheet = doc.sheetsByIndex[1];
   const secondSheet = doc.sheetsByTitle[SPREAD_SHEET_TAB_NAME];
   secondSheet.addRow({ ...newPost });
+}
+
+export async function getPostsLastId(): Promise<number> {
+  const posts = await getPostsFromGoogleSheet();
+  return posts[posts.length - 1].id;
 }
 
 export async function getPostsFromGoogleSheet(): Promise<IPost[]> {
@@ -43,7 +50,7 @@ export async function getPostsFromGoogleSheet(): Promise<IPost[]> {
   const secondSheetRows = await secondSheet.getRows();
 
   const rows: IPost[] = secondSheetRows.map((it) => {
-    return { id: it.id, title: it.title, author: it.author };
+    return { id: Number(it.id), title: it.title, author: it.author };
   });
 
   return rows;

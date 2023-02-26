@@ -34,7 +34,7 @@ const Posts1 = (props: { posts: IPost[] }) => {
   const elemsPosts = props.posts.map((it, i) => <p key={i}>{it.title}</p>);
   return (
     <div>
-      <AddPost />
+      <AddPost onDemand={false} />
       <h2>Posts titles . fetch using getStaticProps</h2>
       {elemsPosts}
     </div>
