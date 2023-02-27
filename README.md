@@ -4,7 +4,7 @@ experiment with next.js Incremental Static Generation
 <h2>Implementation options</h2>
 <ul>
 <li>use periodic revalidate (rebuild) in getStaticProps</li>
-<li>force re-validatation : call unstable_revalidate(). </li>
+<li>force re-validatation : call req.revalidate(). </li>
 </ul>
 
 <h2>periodic revalidate (rebuild) - Posts1 page</h2>
@@ -24,8 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
 ```
 
 <h2>on demand revalidate (rebuild) - Posts2 page</h2>
-<p>call https://<your-site.com>/api/revalidate?secret=<token> to re build the page</p>
-<p>/pages/api/revalidate.ts</p>
+call /api/revalidate from the client
 
 ```ts
 export default async function handler(
@@ -97,5 +96,5 @@ json-server --watch .\public\data\db.json --port 8001
 
 <h2>Open issues</h2>
 <ul>
-<li>i have remarked the check of REVALIDATE_SECRET_TOKEN on revalidate.ts because it was sent from the client and there the environment variable is null. anyway call of /api/revalidate with the secret must be from the server</li>
+<li>i tried to call revalidate from the server. it worked on development but not on production. so i am calling it from the client but then using REVALIDATE_SECRET_TOKEN is problematic</li>
 </ul>
