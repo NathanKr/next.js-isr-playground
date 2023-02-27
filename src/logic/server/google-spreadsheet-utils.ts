@@ -1,5 +1,5 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { IPost } from "../types/i-post";
+import { IPost } from "../../types/i-post";
 import { SPREAD_SHEET_ID, SPREAD_SHEET_TAB_NAME } from "./constants";
 
 export async function loadSpreadSheetDoc(

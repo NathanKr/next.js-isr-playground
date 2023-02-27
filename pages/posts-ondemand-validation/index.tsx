@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 import AddPost from "../../src/components/add-post";
-import { getPostsFromGoogleSheet } from "../../src/logic/google-spreadsheet-utils";
+import { getPostsFromGoogleSheet } from "../../src/logic/server/google-spreadsheet-utils";
 import { IPost } from "../../src/types/i-post";
 
   
@@ -27,7 +27,6 @@ const Posts2 = (props: { posts: IPost[] }) => {
   return (
     <div>
       <AddPost onDemand={true}/>
-      <p>check server console.log for on demand re-validation result --&gt; re build the page</p>
       <h2>Posts titles . fetch using getStaticProps</h2>
       {elemsPosts}
     </div>

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getBaseServerUrl } from "../../src/logic/utils";
 
 // --- This is relevant to on - demand ISR
 // --- call this with https://<your-site.com>/api/revalidate?secret=<token>

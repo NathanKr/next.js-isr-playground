@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 import AddPost from "../../src/components/add-post";
-import { getPostsFromGoogleSheet } from "../../src/logic/google-spreadsheet-utils";
+import { getPostsFromGoogleSheet } from "../../src/logic/server/google-spreadsheet-utils";
 
 interface IPost {
   id: number;

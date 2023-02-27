@@ -1,0 +1,12 @@
+GET http://localhost:3000/api/posts
+
+###
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "onDemand" : true
+}
+
+###
+GET http://localhost:3000/api/revalidate?secret=JCFtCbIWhgkUTSaVl9hfHVwydMDsrBbpoWeUkugCNQIgWTyhEQzzl3iICRcujJBbhbz3nmHFWAfU2Q211cP3qSwxQQ508vkkauSzlHjURztkbUROMTd5iQdlNEX6zC9N
