@@ -87,12 +87,6 @@ npm run build
 npm run start
 ```
 
-<h2>json server</h2>
-invoke from root the following
-
-```
-json-server --watch .\public\data\db.json --port 8001
-```
 
 <h2>Open issues</h2>
 <ul>
